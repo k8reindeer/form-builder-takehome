@@ -42,7 +42,8 @@ const testForm = [{
     "name": "date_of_birth",
     "show_if": (value) => {
       const now = new Date();
-      return value >= new Date(now.getFullYear() - 13, now.getMonth(), now.getDate());
+      console.log(value)
+      return new Date(value) >= new Date(now.getFullYear() - 13, now.getMonth(), now.getDate());
     }
   }
 }]
@@ -51,12 +52,11 @@ const testForm = [{
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <FormBuilder fields={testForm} submitCallback={(submission) => {
+      <h1> Test Dynamic Form</h1>
+      <FormBuilder fields={testForm} submitCallback={(submission) => {
           console.log(submission);
-          }}>
-        </FormBuilder>
-      </header>
+        }}>
+      </FormBuilder>
     </div>
   );
 }
