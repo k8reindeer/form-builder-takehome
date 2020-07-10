@@ -8,6 +8,14 @@ long break for cooking/baking/dinner
 1h adjusting styling, adding features (required, select), and writing this readme
 
 
+## To Run
+```
+cd form-builder
+yarn
+yarn start
+```
+
+
 ## Decisions
 The form data is provided to the caller of this form builder via a callback on submission. The problem statement said to "return" but that doesn't make much sense in React; the callback provides the form data when the caller is most likely to use it.
 
