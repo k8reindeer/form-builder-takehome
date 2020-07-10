@@ -7,7 +7,8 @@ const testForm = [{
   "tag": "input",
   "name": "first_name",
   "type": "text",
-  "human_label": "First Name"
+  "human_label": "First Name",
+  "required": true
 }, {
   "tag": "input",
   "name": "last_name",

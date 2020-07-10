@@ -17,6 +17,10 @@
 	justify-content: center;
 }
 
+.required {
+	color: red;
+}
+
 label {
 	font-weight: 600;
 	flex: 1;

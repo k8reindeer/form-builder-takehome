@@ -6,8 +6,9 @@ import './FormBuilder.css';
 /* Display logic for a single form field. A controlled component */
 function FormField({field, value, onChange}) {
 	return (<div className="field">
-		<label>{field.human_label}</label>
+		<label>{field.human_label} {field.required && <span className="required">*</span>}</label>
 		<input 
+			required={field.required}
 			type={field.type} 
 			name={field.name}
 			value={value}
@@ -21,6 +22,7 @@ function FormField({field, value, onChange}) {
  * - name; the machine readable name for this field
  * - type; input type, supports the same as what the <input> element supports
  * - human_label; the text for the label to display
+ * - required; boolean whether the field is required to be filled out
  * - conditional (optional); a function that takes the
  *     form's state and returns a boolean;
  *     the field will only be shown if the conditional
