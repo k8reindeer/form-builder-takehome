@@ -22,6 +22,23 @@ const testForm = [{
     return value.last_name === "Smith";
   }
 }, {
+  "name": "ice_cream",
+  "type": "select",
+  "human_label": "Favorite Ice Cream Flavor",
+  "options": [{ 
+      "name": "vanilla",
+      "human_label": "Vanilla"
+    }, { 
+      "name": "chocolate",
+      "human_label": "Chocolate"
+    }, { 
+      "name": "mint_choc_chip",
+      "human_label": "Mint Chocolate Chip"
+    }, { 
+      "name": "ricanelas",
+      "human_label": "Bi-Rite Ricanelas"
+    }]
+}, {
   "tag": "input",
   "name": "email",
   "type": "email",

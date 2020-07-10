@@ -7,12 +7,28 @@ import './FormBuilder.css';
 function FormField({field, value, onChange}) {
 	return (<div className="field">
 		<label>{field.human_label} {field.required && <span className="required">*</span>}</label>
-		<input 
-			required={field.required}
-			type={field.type} 
-			name={field.name}
-			value={value}
-			onChange={onChange} />
+		{field.type === "select" ?
+			<select
+				required={field.required}
+				name={field.name}
+				value={value}
+				onChange={onChange}>
+				<option disabled value=""> (select an option) </option>
+				{
+					field.options.map((o) => 
+						<option key={o.name} value={o.name}>
+							{o.human_label}
+						</option>
+					)
+				}
+			</select> :
+			<input
+				required={field.required}
+				type={field.type}
+				name={field.name}
+				value={value}
+				onChange={onChange} />
+			}
 	</div>)
 }
 
@@ -20,9 +36,14 @@ function FormField({field, value, onChange}) {
  *
  * fields is an array of fields, each an object with the following keys:
  * - name; the machine readable name for this field
- * - type; input type, supports the same as what the <input> element supports
  * - human_label; the text for the label to display
  * - required; boolean whether the field is required to be filled out
+ * - type; input type, supports everything the <input> element supports
+ *     as well as the special value "select"
+ * - options; a list of objects with keys
+ *     name; machine-readable name for the option that will be used in the form's state
+ *     human_label; the text to display with this option
+ *     if type is "select", options must be provided.
  * - conditional (optional); a function that takes the
  *     form's state and returns a boolean;
  *     the field will only be shown if the conditional
