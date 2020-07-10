@@ -17,11 +17,8 @@ const testForm = [{
   "name": "middle_name",
   "type": "text",
   "human_label": "Middle Name (lots of people have that last name)",
-  "conditional": {
-    "name": "last_name",
-    "show_if": (value) => {
-      return value === "Smith";
-    }
+  "conditional": (value) => {
+    return value.last_name === "Smith";
   }
 }, {
   "tag": "input",
@@ -48,12 +45,9 @@ const testForm = [{
   "name": "parental_consent",
   "type": "checkbox",
   "human_label": "Parental Consent",
-  "conditional": {
-    "name": "date_of_birth",
-    "show_if": (value) => {
-      const now = new Date();
-      return new Date(value) >= new Date(now.getFullYear() - 13, now.getMonth(), now.getDate());
-    }
+  "conditional": (value) => {
+    const now = new Date();
+    return new Date(value.date_of_birth) >= new Date(now.getFullYear() - 13, now.getMonth(), now.getDate());
   }
 }]
 
@@ -63,7 +57,7 @@ function App() {
     <div className="App">
       <h1> Test Dynamic Form</h1>
       <FormBuilder fields={testForm} submitCallback={(submission) => {
-          console.log(submission);
+          console.log("Submit button clicked, here are your values:", submission);
         }}>
       </FormBuilder>
     </div>
