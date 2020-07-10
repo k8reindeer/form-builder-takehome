@@ -14,6 +14,16 @@ const testForm = [{
   "type": "text",
   "human_label": "Last Name"
 }, {
+  "name": "middle_name",
+  "type": "text",
+  "human_label": "Middle Name (lots of people have that last name)",
+  "conditional": {
+    "name": "last_name",
+    "show_if": (value) => {
+      return value === "Smith";
+    }
+  }
+}, {
   "tag": "input",
   "name": "email",
   "type": "email",
@@ -42,7 +52,6 @@ const testForm = [{
     "name": "date_of_birth",
     "show_if": (value) => {
       const now = new Date();
-      console.log(value)
       return new Date(value) >= new Date(now.getFullYear() - 13, now.getMonth(), now.getDate());
     }
   }
